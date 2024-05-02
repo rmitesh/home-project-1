@@ -49,4 +49,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /* Relationships */
+
+    public function inspector_license()
+    {
+        return $this->hasOne(InspectorLicense::class);
+    }
+
+    public function office_address()
+    {
+        return $this->hasOne(OfficeAddress::class);
+    }
 }
