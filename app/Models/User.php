@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -12,7 +13,9 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
-    public const ROLE_INSPECTOR = 'Inspector';
+    public const ROLE_INSPECTOR = 'inspector';
+
+    public const ROLE_BUYER = 'buyer';
 
     /**
      * The attributes that are mass assignable.
@@ -60,5 +63,10 @@ class User extends Authenticatable
     public function office_address()
     {
         return $this->hasOne(OfficeAddress::class);
+    }
+
+    public function properties(): HasMany
+    {
+        return $this->hasMany(Property::class, 'buyer_id');
     }
 }
