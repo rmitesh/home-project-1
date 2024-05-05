@@ -18,7 +18,7 @@ class PropertyFactory extends Factory
     {
         return [
             'address' => fake()->address(),
-            'built_in' => fake()->dateTimeBetween(-10),
+            'built_in' => fake()->dateTimeBetween(),
             'units' => fake()->randomDigit(),
             'bedrooms' => fake()->randomDigit(),
             'bathrooms' => fake()->randomDigit(),
